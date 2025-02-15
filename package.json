@@ -1,0 +1,21 @@
+{
+  "name": "sms_notifica",
+  "version": "1.0.0",
+  "description": "\"Aplicação para enviar mensagem usando a API do Twilio\"",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "author": "Marcos Ambrósio",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.1",
+    "twilio": "^5.4.0"
+  }
+}
