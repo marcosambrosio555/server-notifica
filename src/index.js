@@ -31,7 +31,7 @@ const mongouri = process.env.MongoURI
 // })
 
 const users = [
-	{ username : "Marcos AMbrósio" , phone : "944636979"  , date : "02/10/2024"}
+	{ username : "Marcos Ambrósio" , phone : "+244944636979"  , date : "02/10/2024"}
 ]
 
 app.post("/message", async (req, res) => {
@@ -39,13 +39,14 @@ app.post("/message", async (req, res) => {
 	// const { users, message } = req.body;
 	// console.log(req)
 
-	// const referer = req.headers['referer']; // URL completa do site que fez a requisição
-  	// const origin = req.headers['origin']; // Apenas o domínio de origem
+	const referer = req.headers['referer']; // URL completa do site que fez a requisição
+  	const origin = req.headers['origin']; // Apenas o domínio de origem
 
-  	// console.log('Referer:', referer);
-  	// console.log('Origin:', origin);
+  	console.log('Referer:', referer);
+  	console.log('Origin:', origin);
 
   	const { message } = req.body;
+
 	const client = twilio(accountSid, authToken);
 
 	users.map(async (user) => {
@@ -57,14 +58,16 @@ app.post("/message", async (req, res) => {
 				to: user.phone,
 			}).then((message) => {
 				console.log("Certo para : " + user.username + " Tel : " + user.phone)
-				// console.log(message)
+				console.log(message)
 			}).catch(err => {
 				console.log("Errado para : " + user.username + " Tel : " + user.phone)
-				// console.log(err)
+				console.log(err)
+			}).finally(()=> {
+				res.redirect(referer)
 			})
 	})
 
-	res.redirect("/")
+	
 
 })
 

@@ -4,8 +4,8 @@
   "description": "\"Aplicação para enviar mensagem usando a API do Twilio\"",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "author": "Marcos Ambrósio",
   "license": "ISC",
